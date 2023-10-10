@@ -11,11 +11,11 @@ int main(int argc , char *argv[]){
     int fd[2];
     
     if(pipe(fd)==-1){
-        write(STDERR_FILENO,"Pipe wasnt created",20);
+        write(STDERR_FILENO,"Pipe wasnt created",19);
     }
     int fd2[2];
     if(pipe(fd2)==-1){
-        write(STDERR_FILENO,"Pipe wasnt created",20);
+        write(STDERR_FILENO,"Pipe wasnt created",19);
     }
 
     pid_t pid = fork();
@@ -47,10 +47,10 @@ int main(int argc , char *argv[]){
         int flag=1;
         if(file!=-1){
             read(file,numbers,256);
-            write(STDERR_FILENO,"file uspeshno otkrit",30);
+            write(STDERR_FILENO,"file uspeshno otkrit\n",22);
         }
         else{
-            write(STDERR_FILENO,"uspeha otkrit file netu",30);
+            write(STDERR_FILENO,"uspeha otkrit file netu\n",22);
             flag=0;
         }
         //закрываем дискриптор чтения, передаем данные из файла в буффер nubmers дочернему процесус

@@ -8,6 +8,8 @@
 
 
 int main(int argc , char *argv[]){
+
+    fflush(stdout);
     int fd[2];
     
     if(pipe(fd)==-1){
@@ -34,7 +36,8 @@ int main(int argc , char *argv[]){
         execvp("./child", argv);
     }
     if(pid>0){
-        char filename[256];
+        usleep(100000);
+        char filename[256]= "kostyl"; 
         read(STDIN_FILENO,filename,256);
         int pos=strlen(filename)-1;
         if(filename[pos]=='\n'){
@@ -42,6 +45,7 @@ int main(int argc , char *argv[]){
         }
 
         //открываем файл
+        printf("#%s#\n", filename);
         int file = open(filename,O_RDONLY);
         char numbers[256];
         int flag=1;
